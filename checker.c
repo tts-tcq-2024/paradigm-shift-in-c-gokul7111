@@ -73,16 +73,14 @@ int IsOutOfRange(float input, float lower, float upper)
 
 int checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs)
 {
+    int retVal = 1;
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
         if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
             printOnConsole(boundaries.ranges[i].message);
-            return 0;
-        }
-        else
-        {
-            return 1;
+            retVal = 0;
         }
     }
+    return retVal;
 }
 
 int isTemperatureOk(float temperature) {
@@ -121,9 +119,6 @@ int isChargeRateOk(float chargeRate) {
   else {
 #if(CHECK_WARN_FOR_SOC ==1)
     return checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES);
-    else{
-      return 1;
-    }
 #else
     return 1;
 #endif
