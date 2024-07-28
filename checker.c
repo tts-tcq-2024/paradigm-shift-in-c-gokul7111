@@ -138,4 +138,5 @@ int main() {
   assert(!batteryIsOk(25, 18, 0));
   assert(!batteryIsOk(25, 25, 1));
   assert(!batteryIsOk(23, 43, 0.77));
+  assert(!batteryIsOk(43, 23, 0.77));
 }
