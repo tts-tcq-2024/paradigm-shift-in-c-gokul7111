@@ -14,7 +14,6 @@ typedef struct {
     float lower;
     float upper;
     char message[50];
-    int state;
     
 } Range;
 
@@ -24,36 +23,28 @@ typedef struct {
 
 ParameterBoundaries SocWarnBoundaries = {
     {
-        {21, 24, "Warning : Approaching Soc Low", WARNING},
-        {76, 80, "Warning : Approaching Soc High", WARNING},
+        {21, 24, "Warning : Approaching Soc Low"},
+        {76, 80, "Warning : Approaching Soc High"},
     }
 };
 
 
 ParameterBoundaries TemperatureWarnBoundaries = {
     {
-        {0, 2.25, "Warning : Approaching Low Temperature", WARNING},
-        {42.75, 45, "Warning : Approaching High Temperature", WARNING},
+        {0, 2.25, "Warning : Approaching Low Temperature"},
+        {42.75, 45, "Warning : Approaching High Temperature"},
     }
 };
 
 ParameterBoundaries ChargeRateWarnBoundaries = {
     {
-        {0.76, 0.8, "Warning : Approaching High charge rate", WARNING},
+        {0.76, 0.8, "Warning : Approaching High charge rate"},
     }
 };
 
 void printOnConsole(const char *message)
 {
     printf("%s\n", message);
-}
-
-void printOnWarning(int state, const char *message)
-{ 
-  if(state == WARNING)
-  {
-    printOnConsole("%s\n", message);
-  }
 }
 
 bool IsWithinTheRange(float input, float lower, float upper)
@@ -84,8 +75,7 @@ int checkForWarnings(flaot value ,ParameterBoundaries boundaries, int NoOfBounda
 {
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
         if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
-            return boundaries.ranges[i].state;
-            printOnConsole(boundaries.ranges[i].state, boundaries.ranges[i].message);
+            printOnConsole(boundaries.ranges[i].message);
         }
     }
 }
