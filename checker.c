@@ -56,10 +56,34 @@ void printOnWarning(int state, const char *message)
   }
 }
 
+bool IsWithinTheRange(float input, float lower, float upper)
+{
+    if (input >= lower && value <= upper)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+bool IsOutOfRange(float input, float lower, float upper)
+{
+    if (input < lower || value > upper)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 int checkForWarnings(flaot value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs)
 {
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
-        if (value >= boundaries.ranges[i].lower && value <= boundaries.ranges[i].upper) {
+        if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
             return boundaries.ranges[i].state;
             printOnConsole(boundaries.ranges[i].state, boundaries.ranges[i].message);
         }
@@ -67,7 +91,7 @@ int checkForWarnings(flaot value ,ParameterBoundaries boundaries, int NoOfBounda
 }
 
 int isTemperatureOk(float temperature) {
-  if (temperature < 0 || temperature > 45) {
+  if (IsOutOfRange(temperature, 0, 45)) {
     printOnConsole("Temperature out of range!\n");
     return 0;
   }
@@ -87,7 +111,7 @@ int isTemperatureOk(float temperature) {
 }
 
 int isSocOk(float soc) {
-  if (soc < 20 || soc > 80) {
+  if (IsOutOfRange(soc, 20, 80)) {
     printOnConsole("State of Charge out of range!\n");
     return 0;
   }
