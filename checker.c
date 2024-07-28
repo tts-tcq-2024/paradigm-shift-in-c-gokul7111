@@ -76,11 +76,11 @@ int checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBounda
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
         if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
             printOnConsole(boundaries.ranges[i].message);
-            return 1;
+            return 0;
         }
         else
         {
-            return 0;
+            return 1;
         }
     }
 }
@@ -92,14 +92,7 @@ int isTemperatureOk(float temperature) {
   }
   else{
 #if(CHECK_WARN_FOR_TEMP ==1)
-    if(checkForWarnings(temperature, TemperatureWarnBoundaries, NO_OF_TEMP_WARN_BOUNDARIES))
-    {
-       return 0;
-    }
-    else
-    {
-      return 1;
-    }
+    return checkForWarnings(temperature, TemperatureWarnBoundaries, NO_OF_TEMP_WARN_BOUNDARIES);
 #else
     return 1;
 #endif
@@ -113,14 +106,7 @@ int isSocOk(float soc) {
   }
   else{
 #if(CHECK_WARN_FOR_SOC ==1)
-    if(checkForWarnings(soc, SocWarnBoundaries, NO_OF_SOC_WARN_BOUNDARIES))
-    {
-       return 0;
-    }
-    else
-    {
-      return 1;
-    }
+    return checkForWarnings(soc, SocWarnBoundaries, NO_OF_SOC_WARN_BOUNDARIES);
 #else
     return 1;
 #endif
@@ -134,10 +120,7 @@ int isChargeRateOk(float chargeRate) {
   }
   else {
 #if(CHECK_WARN_FOR_SOC ==1)
-    if(checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES))
-    {
-       return 0;
-    }
+    return checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES);
     else{
       return 1;
     }
