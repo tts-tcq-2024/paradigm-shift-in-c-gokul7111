@@ -47,9 +47,9 @@ void printOnConsole(const char *message)
     printf("%s\n", message);
 }
 
-bool IsWithinTheRange(float input, float lower, float upper)
+int IsWithinTheRange(float input, float lower, float upper)
 {
-    if (input >= lower && value <= upper)
+    if (input >= lower && input <= upper)
     {
         return 1;
     }
@@ -59,9 +59,9 @@ bool IsWithinTheRange(float input, float lower, float upper)
     }
 }
 
-bool IsOutOfRange(float input, float lower, float upper)
+int IsOutOfRange(float input, float lower, float upper)
 {
-    if (input < lower || value > upper)
+    if (input < lower || input > upper)
     {
         return 1;
     }
@@ -87,11 +87,12 @@ int isTemperatureOk(float temperature) {
   }
   else{
 #if(CHECK_WARN_FOR_TEMP ==1)
-    if(checkForWarnings(temperature, TemperatureBoundaries, NO_OF_TEMP_WARN_BOUNDARIES))
+    if(checkForWarnings(temperature, TemperatureWarnBoundaries, NO_OF_TEMP_WARN_BOUNDARIES))
     {
        return 0;
     }
-    else{
+    else
+    {
       return 1;
     }
 #else
@@ -107,11 +108,12 @@ int isSocOk(float soc) {
   }
   else{
 #if(CHECK_WARN_FOR_SOC ==1)
-    if(checkForWarnings(soc, SocBoundaries, NO_OF_SOC_WARN_BOUNDARIES))
+    if(checkForWarnings(soc, SocWarnBoundaries, NO_OF_SOC_WARN_BOUNDARIES))
     {
        return 0;
     }
-    else{
+    else
+    {
       return 1;
     }
 #else
@@ -127,7 +129,7 @@ int isChargeRateOk(float chargeRate) {
   }
   else {
 #if(CHECK_WARN_FOR_SOC ==1)
-    if(checkForWarnings(chargeRate,ChargeRateBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES))
+    if(checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES))
     {
        return 0;
     }
