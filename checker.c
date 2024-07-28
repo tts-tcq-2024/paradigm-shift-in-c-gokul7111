@@ -1,33 +1,128 @@
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
+
+#define CHECK_WARN_FOR_TEMP 1
+#define CHECK_WARN_FOR_SOC  1
+#define CHECK_WARN_FOR_CHARGERATE 1
+
+#define NO_OF_TEMP_WARN_BOUNDARIES 2
+#define NO_OF_SOC_WARN_BOUNDARIES 2
+#define NO_OF_CHARGERATE_WARN_BOUNDARIES 1
+
+typedef struct {
+    float lower;
+    float upper;
+    char message[50];
+    int state;
+    
+} Range;
+
+typedef struct {
+    Range ranges[5];
+} ParameterBoundaries;
+
+ParameterBoundaries SocWarnBoundaries = {
+    {
+        {21, 24, "Warning : Approaching Soc Low", WARNING},
+        {76, 80, "Warning : Approaching Soc High", WARNING},
+    }
+};
+
+
+ParameterBoundaries TemperatureWarnBoundaries = {
+    {
+        {0, 2.25, "Warning : Approaching Low Temperature", WARNING},
+        {42.75, 45, "Warning : Approaching High Temperature", WARNING},
+    }
+};
+
+ParameterBoundaries ChargeRateWarnBoundaries = {
+    {
+        {0.76, 0.8, "Warning : Approaching High charge rate", WARNING},
+    }
+};
+
+void printOnConsole(const char *message)
+{
+    printf("%s\n", message);
+}
+
+void printOnWarning(int state, const char *message)
+{ 
+  if(state == WARNING)
+  {
+    printOnConsole("%s\n", message);
+  }
+}
+
+int checkForWarnings(flaot value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs)
+{
+    for (int i = 0; i < NoOfBoundaryInputs; ++i) {
+        if (value >= boundaries.ranges[i].lower && value <= boundaries.ranges[i].upper) {
+            return boundaries.ranges[i].state;
+            printOnConsole(boundaries.ranges[i].state, boundaries.ranges[i].message);
+        }
+    }
+}
 
 int isTemperatureOk(float temperature) {
   if (temperature < 0 || temperature > 45) {
-    printf("Temperature out of range!\n");
+    printOnConsole("Temperature out of range!\n");
     return 0;
   }
   else{
+#if(CHECK_WARN_FOR_TEMP ==1)
+    if(checkForWarnings(temperature, TemperatureBoundaries, NO_OF_TEMP_WARN_BOUNDARIES))
+    {
+       return 0;
+    }
+    else{
+      return 1;
+    }
+#else
     return 1;
+#endif
   }
 }
 
 int isSocOk(float soc) {
   if (soc < 20 || soc > 80) {
-    printf("State of Charge out of range!\n");
+    printOnConsole("State of Charge out of range!\n");
     return 0;
   }
-  else {
+  else{
+#if(CHECK_WARN_FOR_SOC ==1)
+    if(checkForWarnings(soc, SocBoundaries, NO_OF_SOC_WARN_BOUNDARIES))
+    {
+       return 0;
+    }
+    else{
+      return 1;
+    }
+#else
     return 1;
+#endif
   }
 }
 
 int isChargeRateOk(float chargeRate) {
   if (chargeRate > 0.8) {
-    printf("Charge Rate out of range!\n");
+    printOnConsole("Charge Rate out of range!\n");
     return 0;
   }
   else {
+#if(CHECK_WARN_FOR_SOC ==1)
+    if(checkForWarnings(chargeRate,ChargeRateBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES))
+    {
+       return 0;
+    }
+    else{
+      return 1;
+    }
+#else
     return 1;
+#endif
   }
 }
 
