@@ -71,11 +71,16 @@ int IsOutOfRange(float input, float lower, float upper)
     }
 }
 
-int checkForWarnings(flaot value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs)
+int checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs)
 {
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
         if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
             printOnConsole(boundaries.ranges[i].message);
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
