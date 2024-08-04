@@ -1,5 +1,4 @@
 #include "CheckWarning.h"
-#include "HelperFunction.h"
 
 static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs);
 
@@ -14,7 +13,7 @@ static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfB
     }
 }
 
-void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, boolean performWarnCheck)
+void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, bool performWarnCheck)
 {
   char* WarnMessage = 0;
   if(performWarnCheck)

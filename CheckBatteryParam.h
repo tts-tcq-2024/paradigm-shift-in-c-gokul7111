@@ -1,7 +1,7 @@
 #ifndef CHECK_BATTERY_PARAM_H
 #define CHECK_BATTERY_PARAM_H
 
-#include "HelperFunction.h"
+#include "CheckParamRange.h"
 #include "CheckWarning.h"
 
 #define CHECK_WARN_FOR_TEMP 1

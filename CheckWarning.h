@@ -1,7 +1,7 @@
 #ifndef INIT_WARN_BOUNDARY_DEF
 #define INIT_WARN_BOUNDARY_DEF
 
-#include <stdio.h>
+#include "HelperFunction.h"
 
 #define NO_OF_TEMP_WARN_BOUNDARIES 2
 #define NO_OF_SOC_WARN_BOUNDARIES 2
@@ -39,6 +39,6 @@ ParameterBoundaries ChargeRateWarnBoundaries = {
     }
 };
 
-void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, boolean performWarnCheck);
+void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, bool performWarnCheck);
 
 #endif
