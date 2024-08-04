@@ -6,8 +6,8 @@ static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfB
 {
     int retVal = 0;
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
-        if (IsInputWithinTheRange(value, boundaries.BoundaryInput[i].lower,boundaries.BoundaryInput[i].upper)) {
-            WarnMsg = boundaries.BoundaryInput[i].message;
+        if (IsInputWithinTheRange(value, boundaries.Boundary[i].lower, boundaries.Boundary[i].upper)) {
+            WarnMsg = boundaries.Boundary[i].message;
             retVal = 1;
         }
     }

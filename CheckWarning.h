@@ -17,7 +17,7 @@ typedef struct {
 } BoundaryInput;
 
 typedef struct {
-    BoundaryInput Boundaries[5];
+    BoundaryInput Boundary[5];
 } ParameterBoundaries;
 
 ParameterBoundaries SocWarnBoundaries = {

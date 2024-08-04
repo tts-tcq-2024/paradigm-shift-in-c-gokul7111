@@ -1,7 +1,7 @@
 #include "CheckParamRange.h"
 
 
-int checkParamRange(float input, float lowerLimit, float upperLimit, char* FailureMsg);
+int checkParamRange(float input, float lowerLimit, float upperLimit, char* FailureMsg)
 {
     if(IsInputOutOfRange(input, lowerLimit, upperLimit))
     {
@@ -13,7 +13,7 @@ int checkParamRange(float input, float lowerLimit, float upperLimit, char* Failu
     }
 }
 
-int checkChargeRate(float input,  float upperLimit, char* FailureMsg);
+int checkChargeRate(float input,  float upperLimit, char* FailureMsg)
 {
     if (input > upperLimit) {
         printOnConsole(FailureMsg);
