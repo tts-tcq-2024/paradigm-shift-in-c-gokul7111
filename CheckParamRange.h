@@ -2,6 +2,7 @@
 #define CHECK_PARAMM_RANGE_H
 
 #include "HelperFunction.h"
+#include <stdio.h>
 
 int checkParamRange(float input, float lowerLimit, float upperLimit, char* FailureMsg);
 

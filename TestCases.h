@@ -2,6 +2,7 @@
 #define TESTCASES_H
 
 #include <assert.h>
+#include <stdio.h>
 #include "ManageBattery.h"
 
 void testTemperatureBelowLowerLimit();

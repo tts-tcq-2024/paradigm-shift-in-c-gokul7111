@@ -2,6 +2,8 @@
 #define INIT_WARN_BOUNDARY_DEF
 
 #include "HelperFunction.h"
+#include <stdio.h>
+#include <stdbool.h>
 
 #define NO_OF_TEMP_WARN_BOUNDARIES 2
 #define NO_OF_SOC_WARN_BOUNDARIES 2
