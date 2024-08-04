@@ -8,10 +8,10 @@ int isTemperatureOk(float temperature) {
 
 int isSocOk(float soc) {
     checkForWarnings(soc, SocWarnBoundaries, NO_OF_SOC_WARN_BOUNDARIES, CHECK_WARN_FOR_SOC);
-    return checkParamRange(temperature, 20, 80, "Soc out of range!\n");
+    return checkParamRange(soc, 20, 80, "Soc out of range!\n");
 }
 
 int isChargeRateOk(float chargeRate) {
   checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES);
-  return checkChargeRate(temperature, 0.8, "Charge rate out of range!\n");
+  return checkChargeRate(chargeRate, 0.8, "Charge rate out of range!\n");
 }

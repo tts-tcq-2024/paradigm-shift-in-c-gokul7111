@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "Testcases.h"
+#include "TestCases.h"
 
 int main() {
     testTemperatureBelowLowerLimit();

@@ -13,4 +13,4 @@ int isSocOk(float soc);
 int isChargeRateOk(float chargeRate);
 
 
-endif
+#endif
