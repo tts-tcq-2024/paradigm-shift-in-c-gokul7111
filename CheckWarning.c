@@ -9,7 +9,7 @@ static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfB
     int retVal = 0;
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
         if (IsInputWithinTheRange(value, boundaries.Boundary[i].lowerLimit, boundaries.Boundary[i].upperLimit)) {
-            strcpy(WarnMessage, strcpyWboundaries.Boundary[i].warnMessage);
+            strcpy(WarnMessage, boundaries.Boundary[i].warnMessage);
             retVal = 1;
         }
     }
