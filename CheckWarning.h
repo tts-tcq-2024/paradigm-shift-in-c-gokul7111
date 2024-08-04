@@ -39,4 +39,6 @@ ParameterBoundaries ChargeRateWarnBoundaries = {
     }
 };
 
+void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, boolean performWarnCheck);
+
 #endif
