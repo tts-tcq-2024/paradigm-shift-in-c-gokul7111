@@ -1,4 +1,4 @@
-#include "TestCase.h"
+#include "TestCases.h"
 
 void testTemperatureBelowLowerLimit() {
     assert(!batteryIsOk(-1, 75, 0.6));
