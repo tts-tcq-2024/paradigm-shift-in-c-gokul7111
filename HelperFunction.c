@@ -1,7 +1,4 @@
-
-#include <stdio.h>
-#include <assert.h>
-#include <string.h>
+#include <HelperFunction.h>
 
 void printOnConsole(const char *message)
 {
