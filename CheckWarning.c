@@ -1,16 +1,17 @@
 #include "CheckWarning.h"
 
-static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs);
+static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, char* WarnMsg);
 
 static int IsWarningFound(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, char* WarnMsg)
 {
     int retVal = 0;
     for (int i = 0; i < NoOfBoundaryInputs; ++i) {
-        if (IsWithinTheRange(value, boundaries.ranges[i].lower,boundaries.ranges[i].upper)) {
-            WarnMsg = boundaries.ranges[i].message;
+        if (IsInputWithinTheRange(value, boundaries.BoundaryInput[i].lower,boundaries.BoundaryInput[i].upper)) {
+            WarnMsg = boundaries.BoundaryInput[i].message;
             retVal = 1;
         }
     }
+    return retVal;
 }
 
 void checkForWarnings(float value ,ParameterBoundaries boundaries, int NoOfBoundaryInputs, bool performWarnCheck)

@@ -3,7 +3,7 @@
 
 int checkParamRange(float input, float lowerLimit, float upperLimit, char* FailureMsg);
 {
-    if(IsOutOfRange(input, lowerLimit, upperLimit))
+    if(IsInputOutOfRange(input, lowerLimit, upperLimit))
     {
         printOnConsole(FailureMsg);
         return 0;

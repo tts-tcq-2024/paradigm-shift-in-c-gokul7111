@@ -12,6 +12,6 @@ int isSocOk(float soc) {
 }
 
 int isChargeRateOk(float chargeRate) {
-  checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES);
+  checkForWarnings(chargeRate,ChargeRateWarnBoundaries, NO_OF_CHARGERATE_WARN_BOUNDARIES, CHECK_WARN_FOR_CHARGERATE);
   return checkChargeRate(chargeRate, 0.8, "Charge rate out of range!\n");
 }
