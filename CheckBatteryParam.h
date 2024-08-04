@@ -2,6 +2,7 @@
 #define CHECK_BATTERY_PARAM_H
 
 #include "HelperFunction.h"
+#include "CheckWarning.h"
 
 #define CHECK_WARN_FOR_TEMP 1
 #define CHECK_WARN_FOR_SOC  1
