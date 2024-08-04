@@ -1,3 +1,5 @@
+4/8/2024 - Refactored Battery Management code for Warning indication
+
 # paradigm-shift-c
 
 # Programming Paradigms
