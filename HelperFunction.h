@@ -2,7 +2,6 @@
 #define HELPERFUNCTION_H
 
 #include <stdio.h>
-#include <assert.h>
 #include <string.h>
 
 void printOnConsole(const char *message); 
